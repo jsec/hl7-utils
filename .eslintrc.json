@@ -1,0 +1,14 @@
+{
+    "extends": [ "standard-with-typescript" ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "project": ["./tsconfig.json"]
+    },
+    "rules": {
+        "comma-dangle": ["error", "never"],
+        "semi": ["error", "always"],
+        "@typescript-eslint/semi": ["error", "always"],
+        "@typescript-eslint/indent": "off",
+        "@typescript-eslint/space-before-function-paren": "off"
+    }
+}
