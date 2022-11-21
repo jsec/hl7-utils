@@ -9,6 +9,7 @@
         "semi": ["error", "always"],
         "@typescript-eslint/semi": ["error", "always"],
         "@typescript-eslint/indent": "off",
-        "@typescript-eslint/space-before-function-paren": "off"
+        "@typescript-eslint/space-before-function-paren": "off",
+        "@typescript-eslint/no-floating-promises": "off"
     }
 }
