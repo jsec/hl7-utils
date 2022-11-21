@@ -1,0 +1,17 @@
+bail: false
+changed: false
+check-coverage: true
+color: true
+comments: false
+coverage: true
+lines: 100
+parser-version: false
+reporter: spec
+save-fixture: false
+show-process-tree: false
+snapshot: false
+statements: 100
+test-ignore: $.
+test-regex: ((\/|^)(tests?|__tests?__)\/.*|\.(tests?|spec)|^\/?tests?)\.([mc]js|[jt]sx?)$
+timeout: 30
+ts: true

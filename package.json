@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "tap",
     "prepare": "husky install"
   },
   "keywords": [],
@@ -14,8 +14,11 @@
     "@mobily/ts-belt": "^3.13.1"
   },
   "devDependencies": {
+    "@types/chai": "^4.3.4",
+    "@types/tap": "^15.0.7",
     "@typescript-eslint/eslint-plugin": "5.43.0",
     "@typescript-eslint/parser": "5.43.0",
+    "chai": "^4.3.7",
     "cz-conventional-changelog": "3.3.0",
     "eslint": "8.28.0",
     "eslint-config-prettier": "8.5.0",
@@ -25,6 +28,7 @@
     "eslint-plugin-promise": "6.1.1",
     "husky": "8.0.0",
     "lint-staged": "13.0.3",
+    "tap": "^16.3.2",
     "typescript": "4.9.3"
   },
   "config": {
