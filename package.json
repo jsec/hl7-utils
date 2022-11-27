@@ -1,7 +1,7 @@
 {
   "name": "hl7-utils",
   "version": "0.0.1",
-  "description": "",
+  "description": "A collection of utilities for handling various HL7 data exchange standards",
   "main": "index.js",
   "scripts": {
     "test": "mocha",
@@ -11,15 +11,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@mobily/ts-belt": "^3.13.1"
+    "@mobily/ts-belt": "3.13.1"
   },
   "devDependencies": {
-    "@types/chai": "^4.3.4",
-    "@types/mocha": "^10.0.0",
-    "@types/node": "^18.11.9",
+    "@types/chai": "4.3.4",
+    "@types/mocha": "10.0.0",
+    "@types/node": "18.11.9",
     "@typescript-eslint/eslint-plugin": "5.43.0",
     "@typescript-eslint/parser": "5.43.0",
-    "chai": "^4.3.7",
+    "chai": "4.3.7",
     "cz-conventional-changelog": "3.3.0",
     "eslint": "8.28.0",
     "eslint-config-prettier": "8.5.0",
@@ -29,10 +29,15 @@
     "eslint-plugin-promise": "6.1.1",
     "husky": "8.0.0",
     "lint-staged": "13.0.3",
-    "mocha": "^10.1.0",
-    "ts-node": "^10.9.1",
+    "mocha": "10.1.0",
+    "ts-node": "10.9.1",
+    "tsconfig-paths": "^4.1.0",
     "typescript": "4.9.3"
   },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "packageManager": "pnpm@7.17.1",
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"

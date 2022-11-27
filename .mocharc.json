@@ -2,5 +2,7 @@
   "extension": ["ts"],
   "require": ["ts-node/register"],
   "recursive": true,
+  "reporter": "spec",
+  "spec": ["test/**/*.test.ts"],
   "exit": true
 }
