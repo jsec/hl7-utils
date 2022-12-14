@@ -1,13 +1,13 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@mobily/ts-belt': ^3.13.1
-  '@types/chai': ^4.3.4
-  '@types/mocha': ^10.0.0
-  '@types/node': ^18.11.9
+  '@mobily/ts-belt': 3.13.1
+  '@types/chai': 4.3.4
+  '@types/mocha': 10.0.0
+  '@types/node': 18.11.9
   '@typescript-eslint/eslint-plugin': 5.45.0
   '@typescript-eslint/parser': 5.45.0
-  chai: ^4.3.7
+  chai: 4.3.7
   cz-conventional-changelog: 3.3.0
   eslint: 8.28.0
   eslint-config-prettier: 8.5.0
@@ -18,7 +18,8 @@ specifiers:
   husky: 8.0.2
   lint-staged: 13.0.4
   mocha: ^10.1.0
-  ts-node: ^10.9.1
+  rimraf: 3.0.2
+  ts-node: 10.9.1
   typescript: 4.9.3
 
 dependencies:
@@ -26,7 +27,7 @@ dependencies:
 
 devDependencies:
   '@types/chai': 4.3.4
-  '@types/mocha': 10.0.1
+  '@types/mocha': 10.0.0
   '@types/node': 18.11.9
   '@typescript-eslint/eslint-plugin': 5.45.0_czs5uoqkd3podpy6vgtsxfc7au
   '@typescript-eslint/parser': 5.45.0_hsf322ms6xhhd4b5ne6lb74y4a
@@ -41,6 +42,7 @@ devDependencies:
   husky: 8.0.2
   lint-staged: 13.0.4
   mocha: 10.1.0
+  rimraf: 3.0.2
   ts-node: 10.9.1_wup25etrarvlqkprac7h35hj7u
   typescript: 4.9.3
 
@@ -245,8 +247,8 @@ packages:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
     dev: true
 
-  /@types/mocha/10.0.1:
-    resolution: {integrity: sha512-/fvYntiO1GeICvqbQ3doGDIP97vWmvFt83GKguJ6prmQM2iXZfFcq6YE8KteFyRtX2/h5Hf91BYvPodJKFYv5Q==}
+  /@types/mocha/10.0.0:
+    resolution: {integrity: sha512-rADY+HtTOA52l9VZWtgQfn4p+UDVM2eDVkMZT1I6syp0YKxW2F9v+0pbRZLsvskhQv/vMb6ZfCay81GHbz5SHg==}
     dev: true
 
   /@types/node/14.18.33:
