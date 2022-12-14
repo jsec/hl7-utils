@@ -2,5 +2,27 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:base"
+  ],
+  "dependencyDashboard": false,
+  "packageRules": [
+    {
+      "matchPackagePatterns": ["*"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "patch/minor dependencies",
+      "groupSlug": "non-major-deps",
+    },
+    {
+      "matchPackagePatterns": ["@typescript-eslint/", "^eslint"],
+      "groupName": "eslint dependencies",
+      "groupSlug": "eslint"
+    },
+    {
+      "matchPackageNames": ["ts-node", "typescript"],
+      "groupName": "typescript dependencies",
+      "groupSlug": "typescript"
+    }
+  ],
+  "schedule": [
+    "before 6am on the first day of the month"
   ]
 }
