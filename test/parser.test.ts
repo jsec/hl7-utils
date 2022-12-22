@@ -13,29 +13,21 @@ describe('Parser', () => {
 
     describe('Field', () => {
         describe('name', () => {
-            it('should set the name based on the parent segment and sequence number', () => {
-                const result = parseField('parent', 'text', delimiters);
-                expect(result).to.equal({
-                    name: 'parent_1',
-                    value: 'text'
-                });
-            });
-
             it('should set the name of a sub-field based on the parent segment, field sequence number, and sub-field sequence number', () => {
-                const result = parseField('parent_1', 'first^second^third', delimiters);
-                expect(result).to.equal({
-                    name: 'parent_1',
+                const result = parseField('parent', 'first^second^third', delimiters);
+                expect(result).to.deep.equal({
+                    name: 'parent',
                     value: [
                         {
-                            name: 'parent_1_1',
+                            name: 'parent_1',
                             value: 'first'
                         },
                         {
-                            name: 'parent_1_2',
+                            name: 'parent_2',
                             value: 'second'
                         },
                         {
-                            name: 'parent_1_2',
+                            name: 'parent_3',
                             value: 'third'
                         }
                     ]
@@ -43,13 +35,13 @@ describe('Parser', () => {
             });
 
             it('should set the name even if the field value does not exist', () => {
-                console.log('wat');
+                const result = parseField('field', '', delimiters);
+                expect(result.name).to.equal('field');
             });
         });
 
-        describe.only('value', () => {
+        describe('value', () => {
             it('should be the field text if there are no sub-field delimiters present', () => {
-                console.log('a||b|c||d'.split('|'));
                 const result = parseField('field', 'sometext', delimiters);
                 expect(result).to.deep.equal({
                     name: 'field',
@@ -68,11 +60,11 @@ describe('Parser', () => {
                         },
                         {
                             name: 'root_2',
-                            value: 'one'
+                            value: 'two'
                         },
                         {
                             name: 'root_3',
-                            value: 'one'
+                            value: 'three'
                         }
                     ]
                 });

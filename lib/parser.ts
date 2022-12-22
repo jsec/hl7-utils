@@ -19,7 +19,7 @@ function parseField(name: string, text: string, delimiters: Delimiters): Node {
     if (text.includes(delimiters.component)) {
         return {
             name,
-            value: text.split(delimiters.component).map(c => parseField(name, c, delimiters))
+            value: text.split(delimiters.component).map((el, idx) => parseField(`${name}_${idx + 1}`, el, delimiters))
         };
     }
 
