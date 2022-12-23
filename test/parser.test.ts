@@ -13,7 +13,12 @@ describe('Parser', () => {
 
     describe('Field', () => {
         describe('name', () => {
-            it('should set the name of a sub-field based on the parent segment, field sequence number, and sub-field sequence number', () => {
+            it('should correctly set the name for components', () => {
+                const result = parseField('parent', 'text', delimiters);
+                expect(result.name).to.equal('parent');
+            });
+
+            it('should correctly set the name for sub-components', () => {
                 const result = parseField('parent', 'first^second^third', delimiters);
                 expect(result).to.deep.equal({
                     name: 'parent',
@@ -34,14 +39,40 @@ describe('Parser', () => {
                 });
             });
 
-            it('should set the name even if the field value does not exist', () => {
+            it('should correctly set the name for sub-sub-components', () => {
+                const result = parseField('field', 'first^sub1&sub2', delimiters);
+                expect(result).to.deep.equal({
+                    name: 'field',
+                    value: [
+                        {
+                            name: 'field_1',
+                            value: 'first'
+                        },
+                        {
+                            name: 'field_2',
+                            value: [
+                                {
+                                    name: 'field_2_1',
+                                    value: 'sub1'
+                                },
+                                {
+                                    name: 'field_2_2',
+                                    value: 'sub2'
+                                }
+                            ]
+                        }
+                    ]
+                });
+            });
+
+            it('should return the field name even if the field is empty', () => {
                 const result = parseField('field', '', delimiters);
                 expect(result.name).to.equal('field');
             });
         });
 
         describe('value', () => {
-            it('should be the field text if there are no sub-field delimiters present', () => {
+            it('should correctly parse a plain field', () => {
                 const result = parseField('field', 'sometext', delimiters);
                 expect(result).to.deep.equal({
                     name: 'field',
@@ -49,7 +80,7 @@ describe('Parser', () => {
                 });
             });
 
-            it('should be an array of sub-fields if sub-field delimiters are present', () => {
+            it('should correctly parse sub-components', () => {
                 const result = parseField('root', 'one^two^three', delimiters);
                 expect(result).to.deep.equal({
                     name: 'root',
@@ -70,7 +101,7 @@ describe('Parser', () => {
                 });
             });
 
-            it('should be an array of values if the repetition delimiter is present', () => {
+            it('should correctly parse a component with repetition characters', () => {
                 const result = parseField('field', 'first~second~third', delimiters);
                 expect(result).to.deep.equal({
                     name: 'field',
@@ -78,11 +109,62 @@ describe('Parser', () => {
                 });
             });
 
-            it('should be an array of values for a sub-field', () => {
-                console.log('wat');
+            it('should correctly parse a sub-component with repetition characters', () => {
+                const result = parseField('field', 'first^sub~sub2~sub3^third', delimiters);
+                expect(result).to.deep.equal({
+                    name: 'field',
+                    value: [
+                        {
+                            name: 'field_1',
+                            value: 'first'
+                        },
+                        {
+                            name: 'field_2',
+                            value: ['sub', 'sub2', 'sub3']
+                        },
+                        {
+                            name: 'field_3',
+                            value: 'third'
+                        }
+                    ]
+                });
             });
 
-            it('should be null if no text is present', () => {
+            it('should correctly parse a sub-sub-component', () => {
+                const result = parseField('field', 'first^sub1&sub2&sub3^third', delimiters);
+                expect(result).to.deep.equal({
+                    name: 'field',
+                    value: [
+                        {
+                            name: 'field_1',
+                            value: 'first'
+                        },
+                        {
+                            name: 'field_2',
+                            value: [
+                                {
+                                    name: 'field_2_1',
+                                    value: 'sub1'
+                                },
+                                {
+                                    name: 'field_2_2',
+                                    value: 'sub2'
+                                },
+                                {
+                                    name: 'field_2_3',
+                                    value: 'sub3'
+                                }
+                            ]
+                        },
+                        {
+                            name: 'field_3',
+                            value: 'third'
+                        }
+                    ]
+                });
+            });
+
+            it('should correctly parse a field with no content', () => {
                 const result = parseField('field', '', delimiters);
                 expect(result).to.deep.equal({
                     name: 'field',

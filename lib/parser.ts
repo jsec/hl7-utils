@@ -23,6 +23,13 @@ function parseField(name: string, text: string, delimiters: Delimiters): Node {
         };
     }
 
+    if (text.includes(delimiters.subComponent)) {
+        return {
+            name,
+            value: text.split(delimiters.subComponent).map((el, idx) => parseField(`${name}_${idx + 1}`, el, delimiters))
+        };
+    }
+
     if (text.includes(delimiters.repetition)) {
         return {
             name,
