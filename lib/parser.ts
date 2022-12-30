@@ -1,8 +1,17 @@
-import { Delimiters, Node } from './interfaces';
+import { ParserError } from './errors';
+import { Delimiters, Message, Node } from './interfaces';
 
-function parseMessage(text: string): any {
-    return text;
-};
+function getMetadata(header: string): Message {
+    // the first segment must always be an MSH segment, so throw if it is not
+    if (header.substring(0, 3) !== 'MSH') {
+        throw new ParserError({
+            name: 'INVALID_SEGMENT',
+            message: 'Non-MSH segment found at segment index 0'
+        });
+    }
+
+    return null as unknown as Message;
+}
 
 function parseField(name: string, text: string, delimiters: Delimiters): Node {
     // if component separator exists,
@@ -44,6 +53,6 @@ function parseField(name: string, text: string, delimiters: Delimiters): Node {
 }
 
 export {
-    parseMessage,
+    getMetadata,
     parseField
 };
