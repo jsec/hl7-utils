@@ -4,7 +4,7 @@
   "description": "A collection of utilities for handling various HL7 data exchange standards",
   "main": "index.js",
   "scripts": {
-    "test": "tap --ts",
+    "test": "tap",
     "prepare": "husky install"
   },
   "keywords": [],
