@@ -10,6 +10,20 @@ function getMetadata(header: string): Message {
         });
     }
 
+    const message: Message = {
+        id: 'something',
+        delimiters: undefined,
+        version: '',
+        timestamp: '',
+        processing: {
+            id: '',
+            code: ''
+        },
+        segments: []
+    };
+
+    console.log(message);
+
     return null as unknown as Message;
 }
 
